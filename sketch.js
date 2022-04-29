@@ -286,6 +286,7 @@ function BeautifulGame(){
   this.draw = function() {
     //background(random(50), 20, 100);
     lights();
+    strokeWeight(1);
     for(let i=0; i < swarm.length; i++){
       swarm[i].run();
     }
