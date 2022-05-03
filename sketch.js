@@ -444,5 +444,9 @@ function ObliviousNetwork(){
     rotate(random(180, 270));
     cone(width*.25, height*.25, int(random(5,10)), 10);
     pop()
+
+    if (frameCount == 500){
+      changeScene();
+    }
   }
 }
