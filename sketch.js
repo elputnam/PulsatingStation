@@ -115,6 +115,10 @@ function DelicateFigure(){
   }
 
   this.draw = function(){
+    if (frameCount == 1){
+      frameRate(20);
+    }
+
     background(0, 100, random(10));
     push();
     translate(-width/2, -height/2)
@@ -194,6 +198,10 @@ function FireflyBurnout(){
   
   this.draw = function() {
     // background(0);
+    if (frameCount == 1){
+      frameRate(30);
+    }
+
     for(let i=0; i < swarm.length; i++){
       swarm[i].run();
     }
@@ -285,6 +293,10 @@ function BeautifulGame(){
   
   this.draw = function() {
     //background(random(50), 20, 100);
+    if (frameCount == 1){
+      frameRate(15);
+    }
+
     lights();
     strokeWeight(1);
     for(let i=0; i < swarm.length; i++){
@@ -406,6 +418,10 @@ function ObliviousNetwork(){
   }
   
   this.draw = function() {
+    if (frameCount == 1){
+      frameRate(5);
+    }
+
     background(0, 100, random(20));
     rotateX(frameCount * random(0.01));
     rotateY(frameCount * random(0.01));
