@@ -294,7 +294,7 @@ function BeautifulGame(){
   }
   
   this.draw = function() {
-    //background(random(50), 20, 100);
+    background(random(50), 20, 100);
     if (frameCount == 1){
       frameRate(15);
     }
