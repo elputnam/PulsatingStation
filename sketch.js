@@ -294,15 +294,11 @@ function BeautifulGame(){
   }
   
   this.draw = function() {
-<<<<<<< HEAD
     //background(random(50), 20, 100);
     if (frameCount == 1){
       frameRate(15);
     }
 
-=======
-    background(random(50), 20, 100);
->>>>>>> 2018add5e2ead793ce5ab883648a7ae83bed2163
     lights();
     strokeWeight(1);
     for(let i=0; i < swarm.length; i++){
@@ -312,7 +308,7 @@ function BeautifulGame(){
     rotateY(turn);
     // rotateY(map(mouseX, 0, width, -1, 1));
     rotateX(turn);
-    // rot3ateX(map(mouseY, 0, width, -1, 1));
+    // rot3ateX(map(mouseY, 03, width, -1, 1));
     rotateZ(turn);
     //noStroke();
     this.drawTrack(random(90,100), rad, v);
