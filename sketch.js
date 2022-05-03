@@ -127,7 +127,7 @@ function DelicateFigure(){
     pop();
     
     // scale(map(mouseX, 0, width, 10, 3))
-    scale(3);
+    scale(4);
     rotateX(millis()/ 1000);
     rotateY(millis() / 2000);
     rotateZ(millis()/ 1500)
@@ -206,8 +206,8 @@ function FireflyBurnout(){
       swarm[i].run();
     }
       push();
-      translate(map(mouseX, 0, width, -width/2, width/2), 
-      map(mouseY, 0, height, -height/2, height/2), 0);
+      // translate(map(mouseX, 0, width, -width/2, width/2), 
+      // map2(mouseY, 0, height, -height/2, height/2), 0);
       noStroke();
       // strokeWeight(random(5, 10));
       // stroke(random(50,100), random(30), 100, lum);
@@ -217,17 +217,19 @@ function FireflyBurnout(){
       lum += 0.5;
   
     if (w1 >= windowHeight){
-      w1 = 0;
-      background(0);
+      // w1 = 0;
+      // background(0);
+      changeScene();
     }
   
     if (lum == 100){
       lum = 0;
+      background(0);
     }
 
-    if (frameCount == 500){
-      changeScene();
-    }
+    // if (frameCount == 500){
+    //   changeScene();
+    // }
   }
   
   class Firefly{
@@ -281,8 +283,8 @@ function BeautifulGame(){
   let twists = 1;
   
   this.setup = function() {
-    rad = height*.03;
-    v = height*.05;
+    rad = height*.3;
+    v = height*.1;
     num = height*.5;
     frameRate(15);
     background(10)
@@ -292,11 +294,15 @@ function BeautifulGame(){
   }
   
   this.draw = function() {
+<<<<<<< HEAD
     //background(random(50), 20, 100);
     if (frameCount == 1){
       frameRate(15);
     }
 
+=======
+    background(random(50), 20, 100);
+>>>>>>> 2018add5e2ead793ce5ab883648a7ae83bed2163
     lights();
     strokeWeight(1);
     for(let i=0; i < swarm.length; i++){
@@ -304,17 +310,17 @@ function BeautifulGame(){
     }
     push();
     rotateY(turn);
-    rotateY(map(mouseX, 0, width, -1, 1));
+    // rotateY(map(mouseX, 0, width, -1, 1));
     rotateX(turn);
-    rotateX(map(mouseY, 0, width, -1, 1));
+    // rot3ateX(map(mouseY, 0, width, -1, 1));
     rotateZ(turn);
     //noStroke();
     this.drawTrack(random(90,100), rad, v);
     //drawEdges(height*0.15, rad, v);
     turn += 0.005;
     pop();
-    v = map(mouseX, 0, width, height*.03, height/2);
-    rad = map(mouseY, 0, height, height*.03, height/2);
+    // v = map(mouseX, 0, width, height*.03, height/2);
+    // rad = map(mouseY, 0, height, height*.03, height/2);
     let toggle = int(random(0,2));
     if (toggle == 1) twists += 0.5;
     if (toggle == 2) twists -= 0.5;
