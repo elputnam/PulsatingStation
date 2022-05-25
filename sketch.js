@@ -96,7 +96,9 @@ function DelicateFigure(){
   let amplitude = []; // Height of wave
   let dx = []; // Value for incrementing X, to be calculated as a function of period and xspacing
   let yvalues; // Using an array to store height values for the wave (not entirely necessary)
-
+  
+  let change;
+  
   this.setup = function(){
     createCanvas(windowWidth, windowHeight, WEBGL);
     background(0, 100,10);
@@ -117,6 +119,7 @@ function DelicateFigure(){
   this.draw = function(){
     if (frameCount == 1){
       frameRate(20);
+      change = int(random(500, 2000));
     }
 
     background(0, 100, random(10));
@@ -140,7 +143,7 @@ function DelicateFigure(){
     sphere(width*.05, 1, int(random(2, 4)));
     pop();
 
-    if (frameCount == 500){
+    if (frameCount == change){
       changeScene();
     }
   }
@@ -184,6 +187,7 @@ function FireflyBurnout(){
   let lum = 0;
   let num;
   let swarm = [];
+  let change;
   
   this.setup = function() {
     reset();
@@ -200,6 +204,7 @@ function FireflyBurnout(){
     // background(0);
     if (frameCount == 1){
       frameRate(30);
+      change = int(random(500, 2000));
     }
 
     for(let i=0; i < swarm.length; i++){
@@ -227,7 +232,7 @@ function FireflyBurnout(){
       background(0);
     }
 
-    // if (frameCount == 500){
+    // if (frameCount == change){
     //   changeScene();
     // }
   }
@@ -281,6 +286,7 @@ function BeautifulGame(){
   let num;
   let swarm = [];
   let twists = 1;
+  let change;
   
   this.setup = function() {
     rad = height*.3;
@@ -297,6 +303,7 @@ function BeautifulGame(){
     background(random(50), 20, 100);
     if (frameCount == 1){
       frameRate(15);
+      change = int(random(500, 2000));
     }
 
     lights();
@@ -323,7 +330,7 @@ function BeautifulGame(){
     if(frameRate%15==0) toggle;
     if (twists == 2) twists = 0.5;
 
-    if (frameCount == 500){
+    if (frameCount == change){
       changeScene();
     }
   }
@@ -412,6 +419,8 @@ function BeautifulGame(){
 //==================Oblivious Network=====================================
 
 function ObliviousNetwork(){  
+  let change; 
+
   this.setup = function() {
     createCanvas(windowWidth, windowHeight, WEBGL);
     colorMode(HSB, 360, 100, 100, 100);
@@ -422,6 +431,7 @@ function ObliviousNetwork(){
   this.draw = function() {
     if (frameCount == 1){
       frameRate(5);
+      change = int(random(500, 2000));
     }
 
     background(0, 100, random(20));
@@ -445,7 +455,7 @@ function ObliviousNetwork(){
     cone(width*.25, height*.25, int(random(5,10)), 10);
     pop()
 
-    if (frameCount == 500){
+    if (frameCount == change){
       changeScene();
     }
   }
