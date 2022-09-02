@@ -203,8 +203,10 @@ function FireflyBurnout(){
   this.draw = function() {
     // background(0);
     if (frameCount == 1){
+      //background(0);
       frameRate(30);
       change = int(random(500, 2000));
+      w1 = 0;
     }
 
     for(let i=0; i < swarm.length; i++){
@@ -222,7 +224,7 @@ function FireflyBurnout(){
       lum += 0.5;
   
     if (w1 >= windowHeight){
-      // w1 = 0;
+      
       // background(0);
       changeScene();
     }
@@ -438,6 +440,7 @@ function ObliviousNetwork(){
     rotateX(frameCount * random(0.01));
     rotateY(frameCount * random(0.01));
     rotateZ(frameCount * random(0.01));
+    strokeWeight(2);
     stroke(175, random(100), random(100));
     // noFill();
     fill(0, 100, random(100));
