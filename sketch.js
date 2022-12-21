@@ -492,6 +492,7 @@ this.setup = function() {
 
 this.draw = function() {
   if (frameCount==1){
+    frameRate(10)
     change = int(random(500, 2000));
   }
   //background(0);
@@ -526,7 +527,7 @@ this.grid = function(){
       let toggle = floor(random(1, 5));
       
       if (toggle == 1){
-        stroke(0);
+  
         fill(100, 100, random(100), random(100));
       } else {
         fill(0);
