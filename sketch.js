@@ -1,5 +1,5 @@
 //Pulsating Station, part of Emergent
-//Randomly cycles through Delicate Figure, Firefly Burnout, Beautfiul Game, Oblivious Network
+//Randomly cycles through Delicate Figure, Firefly Burnout, Beautfiul Game, Oblivious Network, Delicate Feline
 //3D
 
 //p5.scenemanager variable
@@ -16,7 +16,7 @@ function setup() {
   mgr.addScene (FireflyBurnout);
   mgr.addScene (BeautifulGame);
   mgr.addScene (ObliviousNetwork);
-  // mgr.addScene (  );
+  mgr.addScene (DelicateFeline);
 
   mgr.showNextScene();
 }
@@ -51,10 +51,10 @@ function keyPressed(){
         reset();
         mgr.showScene(ObliviousNetwork);
         break;
-      // case '5':
-      //   reset();
-      //   mgr.showScene(  );
-      //   break;
+      case '5':
+        reset();
+        mgr.showScene(DelicateFeline);
+        break;
   }
 }
 
@@ -76,9 +76,9 @@ function changeScene(){
       mgr.showScene(BeautifulGame);
     } else if (chance == 4) {
       mgr.showScene(ObliviousNetwork);
-    } // else if (chance == 5){
-    //   mgr.showScene(  );
-    // }
+    }  else if (chance == 5){
+      mgr.showScene(DelicateFeline);
+     }
 }
 
 //========================================================================
@@ -462,4 +462,114 @@ function ObliviousNetwork(){
       changeScene();
     }
   }
+}
+
+//=================Delicate Feline======================//
+
+function DelicateFeline(){
+let swarm = [];
+let num;
+let tileCount;
+let change;
+
+this.setup = function() {
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  colorMode(HSB, 360, 100, 100, 100);
+  num = height*.5;
+  frameRate(10);
+  tileCount = height*0.1;
+  background(0);
+  for (let i = 0; i < num; i++) {
+    swarm.push(new Pixel());
+  }
+}
+
+this.draw = function() {
+  if (frameCount==1){
+    change = int(random(500, 2000));
+  }
+  //background(0);
+
+  //grid
+  fill(0);
+  push();
+  translate(random(-width), random(-height));
+  this.grid();
+  pop();
+  rotateX(frameCount * 0.001);
+  rotateY(frameCount * 0.001);
+  rotateZ(frameCount * 0.001);
+  scale(random(0.65, 0.7));
+  for(let i=0; i < swarm.length; i++){
+    swarm[i].run();
+  }
+  if (frameCount == change){
+    changeScene();
+  }
+}
+
+this.grid = function(){
+  for (let gridY = 0; gridY <tileCount; gridY++) {
+    for (let gridX = 0; gridX < tileCount; gridX++) {
+      let posX = (width / tileCount) * gridX;
+      let posY = (height / tileCount) * gridY;
+      noStroke();
+      rect(posX, posY, width/tileCount, height/tileCount);
+      let toggle = floor(random(1, 5));
+      
+      if (toggle == 1){
+        stroke(0);
+        fill(100, 100, random(100), random(100));
+      } else {
+        fill(0);
+      }
+    }
+  }
+  
+}
+
+class Pixel{
+  constructor(){
+    this.angle = createVector();
+    this.vel = createVector(0, 0, 0);
+    this.amp = createVector(random(20, width/2), random(20, height/2), random(20, height/2));
+    this.rad = random(height*0.1);
+    this.ts = random(5);
+    this.color = random(250,300);
+    this.sat = random(100);
+    this.lum = random(100);
+    this.alpha = 100;
+  }
+
+  run(){
+    this.update();
+    this.display();
+  }
+  
+  update(){
+    this.accel = createVector(random(-0.001, 0.001), random(-0.001, 0.001), random(-0.001, 0.001));
+    this.vel.add(this.accel);
+    this.angle.add(this.vel);
+  }
+  
+  display(){
+    let x = sin(this.angle.x) * this.amp.x;
+    let y = sin(this.angle.y) * this.amp.y;
+    let z = sin(this.angle.z) * this.amp.z;
+    push();
+    fill(this.color, this.sat, this.lum, random(10,70));
+    // fill(255, 10)
+    // noStroke();
+    strokeWeight(3);
+    // translate(this.loc);
+    translate(x, y, z);
+    box(this.rad);
+    pop();
+  }
+  
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+}
 }
