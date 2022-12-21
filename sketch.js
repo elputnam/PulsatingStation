@@ -81,6 +81,12 @@ function changeScene(){
      }
 }
 
+function mousePressed(){
+
+  let fs = fullscreen();
+  fullscreen(!fs);
+}
+
 //========================================================================
 //=========================Scenes=========================================
 //========================================================================
@@ -514,6 +520,8 @@ this.grid = function(){
       let posX = (width / tileCount) * gridX;
       let posY = (height / tileCount) * gridY;
       noStroke();
+      //stroke(100, 100, 100);
+      //noFill();
       rect(posX, posY, width/tileCount, height/tileCount);
       let toggle = floor(random(1, 5));
       
