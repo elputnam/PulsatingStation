@@ -66,7 +66,7 @@ function windowResized() {
 //changes between scenes automatically and randomly
 function changeScene(){
     reset();
-    let chance = floor(random(1,5));
+    let chance = floor(random(1,5.9));
 
     if (chance == 1){
     mgr.showScene(DelicateFigure);
